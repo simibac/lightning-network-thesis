@@ -33,7 +33,7 @@ Bitcoin is a decentralized payment system which allows anyone with an internet c
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Limitations of Bitcoin (as of December 2016)
-1. **Scalability**: Bitcoin is not scalable. Bitcoin can currently only process a theoretical maximum of 7 transactions per second (tps). But in real world conditions the maximum lies between 2 to 3 tps. In comparison to Paypal, they process almost 11.5 million transactions every single day. This results in a processing power of 133 tps. Also the Visa network processes an average of 150 million transactions every day. Which leads to an avarage of 1736 tps. This illustrates that Bitcoin must find a solution that is more scalable to serve a similarly sized customer base. 
+1. **Scalability**: Bitcoin is not scalable. Bitcoin can currently only process a theoretical maximum of 7 transactions per second (tps). But in real world conditions the maximum lies between 2 to 3 tps. In comparison to Paypal, they process almost 11.5 million transactions every single day. This results in a processing power of 133 tps. Also the Visa network processes an average of 150 million transactions every day. Which leads to an average of 1736 tps. This illustrates that Bitcoin must find a solution that is more scalable to serve a similarly sized customer base. 
 
 2. **Transaction costs**: (Keep in mind that this calculation was done in Dezember 2016 and therefore, the costs are even higher right now!) Bitcoin is not suited for microtransactions. The transaction fees are too high. According to [New Service Finds Optimum Bitcoin Transaction Fee](https://www.coindesk.com/new-service-finds-optimum-bitcoin-transaction-fee/) the average size of a Bitcoin transaction is 645 bytes. The currently most popular fee ratio is CoinTape, they charge 41-50 satoshis per byte. This results in a 0.16 USD fee for every single transaction, which is clearly too high for a microtransaction.
 
@@ -150,12 +150,12 @@ The mechanism to prevent non-cooperation is very similar to before with direct b
 ## Summary
 ### Scalability
 
-As previously discussed, the Bitcoin network has scalability issues. It is therefore not suited to be used by the masses as for example Paypal or Visa. The Lightning Network tries to overcome those obstacles. The Lightning Network takes most of the transactions off the blockchain. The transactions will be stored locally in the nodes. The problem with this whole scenario is the processing power that is needed to include a lot of transactions into the blockchain. There are currently between 2 to 3 transactions per second processed by the bitcoin miner network whereas in comparison the visa network handles an average of 1736 transactions per second.
+As previously discussed, the Bitcoin network has scalability issues. It is therefore not suited to be used by the masses as for example Paypal or Visa. The Lightning Network tries to overcome those obstacles. It takes most of the transactions off the blockchain without loosing its trust policy. The transactions will be stored locally in the nodes. The Lightning Network only uses the blockchain for opening and eventually closing a payment channel.
 
-The Lightning Network only uses the blockchain for the following use-cases: Opening a channel through a broadcasted opening transaction, the closing of the channel through a broadcast of any transaction from that channel.
+
 
 ### Costs   
-In a perfect world, payment channels do not have to be closed at all, and the transaction fees in the Lightning Network are effectively zero. This makes the Lightning Network so attractive. Since almost no transaction has to be broadcasted, almost no costs are generated. If a channel has to be closed for some reason, only the newest commitment transactions have to be considered - all the previous transactions can be discarded. On a cost per transaction basis, the Lightning Network is much cheaper than broadcasting every single transaction.
+In a perfect world, payment channels do not have to be closed at all, and the transaction fees in the Lightning Network are effectively zero. This makes the Lightning Network so attractive. Since almost all transaction are kept off-chain, almost no costs are generated. If a channel has to be closed for some reason, only the newest commitment transactions have to be considered — all the previous transactions can be discarded.
 
 ### Use Cases
 The Lightning Network requires no mining of transactions within the payment channel. Therefore, transactions can be considered instantaneous, they are valid as soon as the channel is updated with another transaction.
@@ -180,4 +180,4 @@ There is some discussion about centralization risks that lead to potential super
 Although the Lightning Network seems to be one of the best solutions to scale the Bitcoin Network, it only prevents transactions from entering the Blockchain and does nothing directly to scale to more users. The Lightning Network still requires on-chain transactions to open and close channels, which is limited by the maximum block size of Bitcoin. The Network will certainly help scale Bitcoin, but it would just delay the maximum block size discussion, which has to be solved eventually.
 
 ### Failure Mode
-When there are a big number of contracts that need to be settled at the same time there's a potential failure. There's only limited amount of data that can go through the blockchain. If there's a large number of channels, that close out rapidly you can run out of capacity. This means the cost of doing a transaction could rise substantially until people start losing out.
+When there isa big number of contracts that need to be settled at the same time, there is a potential failure. There is only a limited amount of data that can be stored to the blockchain. If there is a large number of channels, that close out rapidly. This means that the transaction costs could rise substantially.

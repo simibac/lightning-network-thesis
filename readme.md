@@ -6,7 +6,7 @@ Bitcoin is a decentralized payment system which allows anyone with an internet c
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Contents**
+##Contents
 
 - [Limitations of Bitcoin (as of December 2016)](#limitations-of-bitcoin-as-of-december-2016)
 - [Motivation of the Lightning Network](#motivation-of-the-lightning-network)
@@ -130,7 +130,7 @@ Using smart contracts, it is possible to send bitcoins from Alice to Carol via B
 The following scenario is visualized in the Figure below. To initiate the payment, Alice tells Carol to create a secret. Carol sends the hash to Alice and Alice (1) forwards it to Bob (2). Now Bob pays Carol 1 bitcoin and gets the secret to the hash in exchange (3). Seeing Bob having the secret, Alice can be assured that Bob paid 1 bitcoin to Carol. Alice now pays Bob 1 bitcoin and gets the secret in exchange (4). The payment is now successfully completed.
 
 <p align="center">
-	<img src="./images/MultiParty.pdf" width="300">
+	<img src="./images/MultiParty.png" width="300"/>
 </p>
 
 The problem with this approach is, that there's still trust involved: How can Bob be sure that Carol gives him the secret after sending 1 bitcoin?

@@ -55,9 +55,9 @@ There are several building blocks that need to be understood before diving into 
 ### Multisignature Address
 Multisignature addresses - or simply multisig - are shared Bitcoin addresses that require multiple signatures to spend bitcoins from. The Lightning Network mainly uses 2-of-2 multisigs. A 2-of-2 multisig is a shared Bitcoin address between two Bitcoin users where both must authorize (sign) every transaction. In general, any M-of-N multisig address up to 15 participants would be possible in the Bitcoin Network.
 
-<center>
+<p align="center">
 	<img src="./images/multisig.png" width="400" align="center">
-</center>
+</p>
 
 In this diagram Alice and Bob previously created a multisig address to which both hold a key. Alice wants to spend 5 bitcoins from this multisig back to her own address. Therefore, she creates and signs a transaction and passes it to Bob. If Bob agrees to this transaction, the transaction is valid and 5 bitcoins can be spent. If Bob does not agree, Alice will not be able to execute this payment. 
 
@@ -67,9 +67,9 @@ In this diagram Alice and Bob previously created a multisig address to which bot
 A secret is a randomly generated string. As the name suggests, a secret should ideally not be easy to guess. Accordingly, it has to be fairly large and complex. A cryptographic hash function is a mathematical one-way algorithm, that takes a string (in this case the secret) as an input and computes it into a hash, a unique string of numbers. The essential property of this concept is, that someone who knows the secret can easily recreate the hash, but the secret cannot be reproduced from the hash. In the Figure below a transaction is illustrated that is using secrets and hashes. Colored hashes and secrets indicate to what person the hash or secret belongs to. 
 
 
-<center>
+<p align="center">
 	<img src="./images/hashes_values.png" width="400" align="center">
-</center>
+</p>
 
 ### Time Locks
 A time lock delays the execution of a transaction from a specific address. More precisely: the signature of a user on this address for a specific transaction becomes valid only after that time lock expires. 
@@ -79,11 +79,11 @@ There are two types of time locks: an absolute and a relative type.
 
 * The absolute type is called a CheckLockTimeVerify (CLTV), it refers to an actual time and date. With this type of lock one can create a hash time locked contract (HTLC) as in the Figure below illustrated. Alice makes a transaction to a new multisig address. Alice wants to be sure that Bob can only unlock this multisig if he provides the secret from another transaction (green key). She also wants to make sure that she gets her bitcoin back if Bob does not corporate. That is why the CLTV lock is needed. 
 
-<center>
-	<img src="./images/HTLC.png" width="500" align="center">
-</center>
+<p align="center">
+	<img src="./images/HTLC.png" width="500">
+</p>
 
-## Bidirectional Channel
+## Bidirectional Payment Channel
 The idea of payment channels has been around for a while, but only with limited use. They are one-directional. Alice can pay Bob through several off-chain transactions, but Bob can't pay Alice at all. To solve this problem, the concept of a bi-directional channels was created. This bi-directional channel is realized with a 2-of-2 multisig address.
 
 ### Opening the Channel
@@ -121,7 +121,6 @@ Bob had 6 bitcoins in the first transaction and only 5.5 bitcoins in the second.
 
 If Bob decides to sign the first commitment transaction Alice gave him, Alice gets 4 bitcoins immediately. The second transaction is from the multisig to Bob's account - but there's a time lock of 1000 blocks on it. Since Alice's transaction got included in the blockchain and she received her 4 bitcoins, she knows that Bob tried to broadcast an old transaction. Bob's transaction is delayed and Alice can now use Bob's previously exchanged secret to receive his funds immediately. Alice has now all the money from the channel and the channel is closed.
 
-
 ## Multiple Party Channel
 
 Alice and Bob already have an open channel and Bob and Carol have an open channel. What happens if Alice wants to send Carol some bitcoins?
@@ -130,11 +129,9 @@ Using smart contracts, it is possible to send bitcoins from Alice to Carol via B
             
 The following scenario is visualized in the Figure below. To initiate the payment, Alice tells Carol to create a secret. Carol sends the hash to Alice and Alice (1) forwards it to Bob (2). Now Bob pays Carol 1 bitcoin and gets the secret to the hash in exchange (3). Seeing Bob having the secret, Alice can be assured that Bob paid 1 bitcoin to Carol. Alice now pays Bob 1 bitcoin and gets the secret in exchange (4). The payment is now successfully completed.
 
-<center>
+<p align="center">
 	<img src="./images/MultiParty.pdf" width="400" align="center">
-</center>
-
-
+</p>
 
 The problem with this approach is, that there's still trust involved: How can Bob be sure that Carol gives him the secret after sending 1 bitcoin?
 
@@ -143,7 +140,7 @@ This is where CTLV-time locks come in: Instead of just giving 1 bitcoin back, th
 
 Carol provided Alice with the corresponding hash to her new secret. Since Alice will pay Carol through already existing channels, she will use her channel with Bob as an intermediate. Therefore, she provides Bob with Carol's hash, updating their payment channel with a new commitment. But in this new commitment, Alice will separate a bitcoin, which is her payment to Carol. This bitcoin is locked up with Carol's hash. Bob will only be able to get this bitcoin with Carol's corresponding secret. To get this secret from Carol, he sends Carol an update request of their payment channel. Bob now creates a commitment on their payment channel with Carol, where he also locks up a bitcoin, Alice's payment for Carol. Carol can unlock this with her corresponding secret. So she sends her secret to Bob to get her bitcoin. Bob forwards this secret to Alice to get his bitcoin.
 
-<!-- ![alt text](Bidirectional_with_HTLC.png "Bidirectional_with_HTLC") -->
+![alt text](./images/<p align="center">Bidirectional_with_HTLC.png "Bidirectional_with_HTLC")
 
 Since Carol sent Alice the hash, she is actively listening for an update request from any source. Bob is acting as a middle man since he received Carol's hash from Alice. Therefore, he sends Carol an update request. In this update, Bob separates or locks up a bitcoin, which represents Alice's debt to Carol. This separated bitcoin can be unlocked if Carol provides the correct secret to Bob. In the previous Figure a complete overview with all possible failsafes is shown. 
 

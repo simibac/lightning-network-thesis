@@ -130,13 +130,12 @@ Using smart contracts, it is possible to send bitcoins from Alice to Carol via B
 The following scenario is visualized in the Figure below. To initiate the payment, Alice tells Carol to create a secret. Carol sends the hash to Alice and Alice (1) forwards it to Bob (2). Now Bob pays Carol 1 bitcoin and gets the secret to the hash in exchange (3). Seeing Bob having the secret, Alice can be assured that Bob paid 1 bitcoin to Carol. Alice now pays Bob 1 bitcoin and gets the secret in exchange (4). The payment is now successfully completed.
 
 <p align="center">
-	<img src="./images/MultiParty.pdf" width="400" align="center">
+	<img src="./images/MultiParty.pdf" width="300">
 </p>
 
 The problem with this approach is, that there's still trust involved: How can Bob be sure that Carol gives him the secret after sending 1 bitcoin?
 
 This is where CTLV-time locks come in: Instead of just giving 1 bitcoin back, the bitcoin is deposited into a 2-of-2 multisig which can be unlocked either with the secret or after a certain period of time.
-
 
 Carol provided Alice with the corresponding hash to her new secret. Since Alice will pay Carol through already existing channels, she will use her channel with Bob as an intermediate. Therefore, she provides Bob with Carol's hash, updating their payment channel with a new commitment. But in this new commitment, Alice will separate a bitcoin, which is her payment to Carol. This bitcoin is locked up with Carol's hash. Bob will only be able to get this bitcoin with Carol's corresponding secret. To get this secret from Carol, he sends Carol an update request of their payment channel. Bob now creates a commitment on their payment channel with Carol, where he also locks up a bitcoin, Alice's payment for Carol. Carol can unlock this with her corresponding secret. So she sends her secret to Bob to get her bitcoin. Bob forwards this secret to Alice to get his bitcoin.
 

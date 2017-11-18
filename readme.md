@@ -80,7 +80,7 @@ There are two types of time locks: an absolute and a relative type.
 * The absolute type is called a CheckLockTimeVerify (CLTV), it refers to an actual time and date. With this type of lock one can create a hash time locked contract (HTLC) as in the Figure below illustrated. Alice makes a transaction to a new multisig address. Alice wants to be sure that Bob can only unlock this multisig if he provides the secret from another transaction (green key). She also wants to make sure that she gets her bitcoin back if Bob does not corporate. That is why the CLTV lock is needed. 
 
 <p align="center">
-	<img src="./images/HTLC.png" width="500">
+	<img src="./images/HTLC.png" width="700">
 </p>
 
 ## Bidirectional Payment Channel

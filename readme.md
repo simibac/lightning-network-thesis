@@ -56,7 +56,7 @@ There are several building blocks that need to be understood before diving into 
 Multisignature addresses - or simply multisig - are shared Bitcoin addresses that require multiple signatures to spend bitcoins from. The Lightning Network mainly uses 2-of-2 multisigs. A 2-of-2 multisig is a shared Bitcoin address between two Bitcoin users where both must authorize (sign) every transaction. In general, any M-of-N multisig address up to 15 participants would be possible in the Bitcoin Network.
 
 <center>
-	<img src="multisig.png" width="400" align="center">
+	<img src="./images/multisig.png" width="400" align="center">
 </center>
 
 In this diagram Alice and Bob previously created a multisig address to which both hold a key. Alice wants to spend 5 bitcoins from this multisig back to her own address. Therefore, she creates and signs a transaction and passes it to Bob. If Bob agrees to this transaction, the transaction is valid and 5 bitcoins can be spent. If Bob does not agree, Alice will not be able to execute this payment. 
@@ -68,7 +68,7 @@ A secret is a randomly generated string. As the name suggests, a secret should i
 
 
 <center>
-	<img src="hashes_values.png" width="400" align="center">
+	<img src="./images/hashes_values.png" width="400" align="center">
 </center>
 
 ### Time Locks
@@ -80,7 +80,7 @@ There are two types of time locks: an absolute and a relative type.
 * The absolute type is called a CheckLockTimeVerify (CLTV), it refers to an actual time and date. With this type of lock one can create a hash time locked contract (HTLC) as in the Figure below illustrated. Alice makes a transaction to a new multisig address. Alice wants to be sure that Bob can only unlock this multisig if he provides the secret from another transaction (green key). She also wants to make sure that she gets her bitcoin back if Bob does not corporate. That is why the CLTV lock is needed. 
 
 <center>
-	<img src="HTLC.png" width="500" align="center">
+	<img src="./images/HTLC.png" width="500" align="center">
 </center>
 
 ## Bidirectional Channel
@@ -97,7 +97,7 @@ These commitment transactions serve similarly to a contract: They are a trustles
 
 Alice and Bob both sign their opening transactions and broadcast it onto the blockchain. The channel is now open. At this point, both have the option to sign and broadcast the commitment transaction and thereby close the channel. But the whole trick is that neither of them signs and broadcasts the commitment transaction. The channel stays open and can be used for further transactions between them. In the Figure below the just described scenario is illustrated.
 
-<!--![alt text](new_opening_transaction.png "new opening transaction")-->
+![alt text](./images/new_opening_transaction.png "new opening transaction")
 
 
 ### Updating the Channel
@@ -105,7 +105,7 @@ Since a bi-directional payment channel is now already established, things get ea
 
 Afterwards, they generate a new secret and again exchange half-signed commitment transactions: Bob creates a commitment transaction where he immediately gets 5.5 bitcoins and 4.5 bitcoins go into a 2-of-2 multisig (same setup as before). Alice does the same but mirrored. For every new transaction, this process will be repeated. The updated transaction is shown in the Figure below.
 
-<!--![alt text](new_update_transaction.png "new update transaction") -->
+![alt text](./images/new_update_transaction.png "new update transaction")
 
 ### Closing the Channel
 If both parties want to peacefully close a channel they can both sign a new transaction, that gives them their fair share of the multisig. Everybody will get their amount of bitcoins immediately after it has been added to the blockchain. Every previous transaction in the channel can be discarded.
@@ -131,7 +131,7 @@ Using smart contracts, it is possible to send bitcoins from Alice to Carol via B
 The following scenario is visualized in the Figure below. To initiate the payment, Alice tells Carol to create a secret. Carol sends the hash to Alice and Alice (1) forwards it to Bob (2). Now Bob pays Carol 1 bitcoin and gets the secret to the hash in exchange (3). Seeing Bob having the secret, Alice can be assured that Bob paid 1 bitcoin to Carol. Alice now pays Bob 1 bitcoin and gets the secret in exchange (4). The payment is now successfully completed.
 
 <center>
-	<img src="MultiParty.pdf" width="400" align="center">
+	<img src="./images/MultiParty.pdf" width="400" align="center">
 </center>
 
 

@@ -6,7 +6,7 @@ Bitcoin is a decentralized payment system which allows anyone with an internet c
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-##Contents
+## Contents
 
 - [Limitations of Bitcoin (as of December 2016)](#limitations-of-bitcoin-as-of-december-2016)
 - [Motivation of the Lightning Network](#motivation-of-the-lightning-network)
